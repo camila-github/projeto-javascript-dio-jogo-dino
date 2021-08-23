@@ -1,0 +1,176 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: rgb(3, 34, 23);
+}
+
+#jogoDino{
+    width: 0%;
+    height: 90%;
+    position: relative;
+    background-color: rgb(3, 34, 23);
+    background-size: 5000px;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 2%;
+}
+
+.intro{
+    animation: open 1s linear 0s 1 forwards;
+}
+
+@keyframes open{
+    to{ width: 80%; }
+}
+
+#montanha{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    background: url(/assets/img/paisagem/montanha.png) repeat-x;
+    background-size: 340px;
+    background-position-x: 0px;
+    bottom: -135px;
+    z-index: 1;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+}
+
+#areia{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    background: url(/assets/img/paisagem/areia.png) repeat-x;
+    background-size: 255px;
+    background-position-x: 0px;
+    bottom: -280px;
+    z-index: 2;
+}
+
+#areia-cactus{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    background: url(/assets/img/paisagem/cactus.png) repeat-x;
+    background-size: 120px;
+    background-position-x: 0px;
+    bottom: -270px;
+    z-index: 3;
+}
+
+#chao{
+    width: 100%;
+    height: 22%;
+    position: absolute;
+    background: url(/assets/img/paisagem/chao.png) repeat-x;
+    background-size: 100px;
+    background-position-x: 0px;
+    bottom: 0%;
+    z-index: 4;
+}
+
+#cactus-um{
+    width: 65px;
+    height: 75px;
+    background: url(/assets/img/paisagem/cactus1.png) no-repeat;
+    background-size: 60px;
+    position: absolute;
+    z-index: 5;
+    top: 415px;
+    left: 1095px;
+}
+
+#cactus-dois{
+    width: 40px;
+    height: 45px;
+    background: url(/assets/img/paisagem/cactus2.png) no-repeat;
+    background-size: 40px;
+    position: absolute;
+    z-index: 5;
+    top: 440px;
+    left: 1495px;   
+}
+
+#cactus-tres{
+    width: 65px;
+    height: 75px;
+    background: url(/assets/img/paisagem/cactus3.png) no-repeat;
+    background-size: 60px;
+    position: absolute;
+    z-index: 5;
+    top: 415px;
+    left: 2095px;
+}
+
+#pontuacaoMaxima{
+    font-family: arcade;
+    color: rgb(180, 15, 15);
+    font-size: 30px;
+    position: absolute;
+    top: 65px;
+    left: 50px;
+    -webkit-text-stroke-width: 0.2px;
+  
+}
+
+#pontuacaoTitulo{
+    font-family: arcade;
+    color: rgb(180, 15, 15);
+    font-size: 30px;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    -webkit-text-stroke-width: 0.2px;
+
+}
+
+#pontuacao{
+    font-family: arcade;
+    color: rgb(180, 15, 15);
+    font-size: 30px;
+    position: absolute;
+    top: 40px;
+    left: 230px;
+    -webkit-text-stroke-width: 0.2px;
+  
+}
+
+#gameOver{
+    position: absolute;
+    top: 20%;
+    left: 51%;
+    transform: translateX(-55%);
+    z-index: 6;
+    visibility: hidden;
+  
+    
+}
+
+#gamerOver img{
+    width: 50px;
+    height: 50px;
+}
+
+#reiniciarJogo{
+    background: no-repeat;
+    background-size: 170px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#reiniciarJogo img{
+    width: 50px;
+    height: 50px;
+    border-style: dotted;
+    border-color: rgb(165, 25, 32);
+    border-radius: 50%;
+}

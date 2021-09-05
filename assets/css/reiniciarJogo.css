@@ -5,11 +5,6 @@
 }
 
 @font-face{
-    font-family: arcade;
-    src: url('/assets/fonts/arcade.ttf');
-}
-
-@font-face{
-    font-family: DinoLogo;
-    src: url('/assets/fonts/DinoLogo.TTF');
+    font-family: JungleHope;
+    src: url('../fonts/JungleHope.otf');
 }

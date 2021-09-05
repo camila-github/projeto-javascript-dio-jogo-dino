@@ -1,0 +1,84 @@
+@media (max-width: 1054px) {
+    html {
+        margin: auto;
+        padding: auto;
+    }
+
+    #iniciarJogo{
+        left: 420px;
+    }
+    .dino{
+        left: 200px;
+    }
+
+    .title{
+        left: 100px;
+    }
+}
+
+@media (max-width: 820px) {
+    html {
+        margin: auto;
+        padding: auto;
+    }
+
+    #iniciarJogo,
+    .cacto{
+        left: 400px;
+    }
+
+    .dino{
+        left: 0px;
+    }
+
+    .title{
+        left: 0px;
+    }
+
+    #gameOver{
+        left: 56%;
+    }
+}
+
+@media (max-width: 720px) {
+    html {
+        margin: auto;
+        padding: auto;
+    }
+
+    #iniciarJogo,
+    .cacto{
+        left: 300px;
+    }
+
+    .dino{
+        left: 0px;
+    }
+
+    .title{
+        left: 0px;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        margin: auto;
+        padding: auto;
+    }
+
+    #iniciarJogo,
+    .cacto{
+        left: 210px;
+    }
+
+    .dino{
+        left: 0px;
+    }
+
+    .title{
+        left: 0px;
+    }
+}
+
+
+

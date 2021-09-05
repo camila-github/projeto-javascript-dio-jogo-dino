@@ -4,7 +4,7 @@ let posicaoCactusUm; let posicaoCactusDois; let posicaoCactusTres;
 let velocity; let velocityParalax;
 let paralaxX;
 let pontuacao;
-let animaWorld; let animaGravity; let animaJump;
+let animaPaisagem; let animaGravidade; let animaPular;
 let cactusUm; 
 let cactusDois;
 let cactusTres;
@@ -15,14 +15,18 @@ let areiaCactus;
 let chao;
 let contReiniciarPosicaoCactus = 0;
 
-document.getElementById('reiniciarJogo').addEventListener('click', ()=>{
+document.getElementById('reiniciarJogo').addEventListener('click', () => {
     reiniciarPosicaoCactus();
     iniciar()
     document.getElementById('gameOver').style.visibility = 'hidden'
     document.getElementById('reiniciarJogo').style.visibility = 'hidden'
+
+    document.getElementById('pontuacaoMaxima').style.visibility = 'visible'
+    document.getElementById('pontuacaoTitulo').style.visibility = 'visible'
+    document.getElementById('pontuacao').style.visibility = 'visible'
 })
 
-document.getElementById('iniciarJogo').addEventListener('click', ()=>{
+document.getElementById('iniciarJogo').addEventListener('click', () => {
     const menu = document.getElementById('iniciarMenu');
     document.body.removeChild(menu);
     document.getElementById('jogoDino').setAttribute('class', 'intro')
@@ -32,13 +36,14 @@ document.getElementById('iniciarJogo').addEventListener('click', ()=>{
 window.addEventListener("keydown", teclaPressionada);
 
 function teclaPressionada (event) {
-    if (event.keyCode === 32 && direcaoY >= 420) jump();    
+    if (event.keyCode === 32 && direcaoY >= 420) pular();    
 }
 
 function iniciar(){
     posicaoX = 1; posicaoY = 1; direcaoX = 0; direcaoY = 420; 
     posicaoCactusUm = 2095; posicaoCactusDois = 2695; posicaoCactusTres = 2695;
     velocity = 5; velocityParalax = 0.3; paralaxX = 0; pontuacao = 0;
+
     cactusUm = document.getElementById('cactus-um'); 
     cactusDois = document.getElementById('cactus-dois');
     cactusTres = document.getElementById('cactus-tres');
@@ -49,11 +54,12 @@ function iniciar(){
     chao = document.getElementById('chao');
     dino.setAttribute('class', 'dinoCorrer')
     dino.style.top = direcaoY + 'px';
-    gravity() 
-    render()
+    
+    gravidade() 
+    renderizar()
 }
 
-function gravity(){
+const gravidade = () => {
     if (direcaoY < 420){
         direcaoY+= posicaoY * velocity;
         dino.style.top = direcaoY + 'px';
@@ -62,23 +68,23 @@ function gravity(){
             dino.removeAttribute('class')
             dino.setAttribute('class','dinoCorrer')
         }
-    animaGravity = requestAnimationFrame(gravity)
+    animaGravidade = requestAnimationFrame(gravidade)
     }
 }
 
-function jump(){
-    cancelAnimationFrame(animaGravity)
+const pular = () => {
+    cancelAnimationFrame(animaGravidade)
     dino.setAttribute('class', 'dinoPular')
     if (direcaoY > 270){
         direcaoY-= posicaoY * velocity;
         dino.style.top = direcaoY + 'px';
-        animaJump = requestAnimationFrame(jump);
+        animaPular = requestAnimationFrame(pular);
     }else{
-        gravity();
+        gravidade();
     }
 }
 
-function render(){
+const renderizar = () => {
     direcaoX-= posicaoX * velocity;
     paralaxX-= posicaoX * velocityParalax;
     montanha.style.backgroundPosicaoX = paralaxX + 'px';
@@ -87,15 +93,15 @@ function render(){
     areiaCactus.style.backgroundPosicaoX = x + 'px';
     chao.style.backgroundPosicaoX = direcaoX + 'px';
     criarCactus();
-    let status = hasCollision();
+    let status = colisao();
     velocity+= 0.005;
     pontuacao++;
     document.getElementById('pontuacao').innerHTML = pontuacao;   
-    animaWorld = requestAnimationFrame(render);
-    stop(status);
+    animaPaisagem = requestAnimationFrame(renderizar);
+    pararJogo(status);
 }
 
-function criarCactus(){
+const criarCactus = () => {
         contReiniciarPosicaoCactus++;
         if(contReiniciarPosicaoCactus > 1000) reiniciarPosicaoCactus();
 
@@ -113,37 +119,39 @@ function criarCactus(){
 }
 
 
-function hasCollision(){
-    if (posicaoCactusUm < 175 && direcaoY > 360 && posicaoCactusUm > 95){
+const colisao = () => {
+    if (posicaoCactusUm < 155 && direcaoY > 340 && posicaoCactusUm > 75){
         dino.setAttribute('class', 'dinoPerdeu');
         return true;
-    }else if (posicaoCactusDois < 175 && direcaoY > 360 && posicaoCactusDois > 95){
+    }else if (posicaoCactusDois < 155 && direcaoY > 340 && posicaoCactusDois > 75){
         dino.setAttribute('class', 'dinoPerdeu');
         return true;
-    }else if (posicaoCactusTres < 175 && direcaoY > 360 && posicaoCactusTres > 95){
+    }else if (posicaoCactusTres < 155 && direcaoY > 340 && posicaoCactusTres > 75){
         dino.setAttribute('class', 'dinoPerdeu');
         return true;
     }
     return false;
 }
 
-function stop(status){
-
+const pararJogo = (status) => {
     if (status){
-        direcaoY = 0
-        cancelAnimationFrame(animaGravity)
-        cancelAnimationFrame(animaJump)
-        cancelAnimationFrame(animaWorld)
-    
+        direcaoY = 0;
+        cancelAnimationFrame(animaGravidade);
+        cancelAnimationFrame(animaPular);
+        cancelAnimationFrame(animaPaisagem);
+        
         document.getElementById('pontuacaoMaxima').innerHTML = 'PONTUACAO MAXIMA : ' + pontuacao;
         document.getElementById('gameOver').style.visibility = 'visible'
         document.getElementById('reiniciarJogo').style.visibility = 'visible'
+
+        document.getElementById('pontuacaoMaxima').style.visibility = 'hidden'
+        document.getElementById('pontuacaoTitulo').style.visibility = 'hidden'
+        document.getElementById('pontuacao').style.visibility = 'hidden'
     }
 }
 
 
-function reiniciarPosicaoCactus() {    
-    
+const reiniciarPosicaoCactus = () => {    
     contReiniciarPosicaoCactus = 0;
     posicaoCactusUm = 1095; posicaoCactusDois = 1595; posicaoCactusTres = 2095;
 }

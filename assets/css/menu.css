@@ -1,20 +1,20 @@
 #iniciarMenu{
     width: 80%;
     height: 80%;
-    background: url(/assets/img/paisagem/inicioTelaFundo.jpg) no-repeat;
+    background: url('../img/paisagem/inicioTelaFundo.jpg') no-repeat;
     position: relative;
     visibility: visible;
     border-radius: 2%;
 }
 
 .title{
-    color: rgb(97, 5, 5);
-    font-family: DinoLogo;
+    color: rgb(218, 14, 14);
+    font-family: JungleHope;
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: white;
-    font-size: 92px;
+    font-size: 105px;
     position: absolute;
-    top: 280px;
+    top: 240px;
     left: 200px;
     transform: rotate(-5deg);
     z-index: 1;
@@ -33,7 +33,7 @@
 .cacto{
     width: 250px;
     height: 250px;
-    background-image: url(/assets/img/paisagem/cactusInicio.png);
+    background-image: url('../img/paisagem/cactusInicio.png');
     background-repeat: no-repeat;
     background-size: 150px;
     position: absolute;
@@ -52,13 +52,14 @@
     z-index: 2;
     cursor: pointer;
     font-size: 50px;
-    font-family: DinoLogo;
+    font-family: JungleHope;
     color:rgb(23, 4, 189);
     -webkit-text-stroke-width: 0.2px;
-    -webkit-text-stroke-color: white;
-   
+    -webkit-text-stroke-color: #fff;  
 }
 
 #iniciarJogo:hover{
     background-size: 210px;
+    color:#93d808;
+    text-shadow: 0.14rem 0.14rem 0.8rem #fff;  
 }
